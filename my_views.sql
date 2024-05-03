@@ -9,7 +9,7 @@ UNION ALL
 SELECT last_name AS lastname,
        first_name AS firstname,
        NULL AS age,
- start_date
+       start_date
 FROM WORKERS_FACTORY_2
 WHERE end_date IS NULL
 ORDER BY start_date DESC;
@@ -20,7 +20,7 @@ SELECT lastname,
        firstname,
        age,
        start_date,
-       DATEDIFF(CURRENT_DATE, start_date) AS days_elapsed
+       TRUNC(SYSDATE) - start_date AS days_elapsed
 FROM ALL_WORKERS;
 
 
@@ -41,4 +41,3 @@ SELECT r.id AS robot_id,
 FROM ROBOTS r
 JOIN ROBOTS_FROM_FACTORY rf ON r.id = rf.robot_id
 JOIN FACTORIES f ON rf.factory_id = f.id;
-
